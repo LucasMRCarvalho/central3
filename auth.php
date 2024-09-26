@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
 
     // Validação básica
     if (empty($username) || empty($senha)) {
-        redirect('login.php?error=' . urlencode("Por favor, preencha todos os campos."));
+        redirect('index.php?error=' . urlencode("Por favor, preencha todos os campos."));
     } else {
         // Consulta ao banco de dados
         $stmt = $conn->prepare("SELECT id, password FROM usuarios WHERE username = ?"); // Alterado de email para username
@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             $stmt->fetch();
             if (password_verify($senha, $hashed_password)) {
                 $_SESSION['user_id'] = $user_id;
-                redirect('index.php?success=' . urlencode("Login bem-sucedido!")); // Mensagem de sucesso
+                redirect('dashboard.php?success=' . urlencode("Login bem-sucedido!")); // Mensagem de sucesso
             } else {
-                redirect('login.php?error=' . urlencode("Senha incorreta.")); // Mensagem de erro
+                redirect('index.php?error=' . urlencode("Senha incorreta.")); // Mensagem de erro
             }
         } else {
-            redirect('login.php?error=' . urlencode("Usuário não encontrado.")); // Mensagem de erro
+            redirect('index.php?error=' . urlencode("Usuário não encontrado.")); // Mensagem de erro
         }
         $stmt->close();
     }
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 
     // Validação básica
     if (empty($username) || empty($email) || empty($senha)) {
-        redirect('login.php?error=' . urlencode("Por favor, preencha todos os campos."));
+        redirect('index.php?error=' . urlencode("Por favor, preencha todos os campos."));
     } else {
         // Verificar se o email já existe
         $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
@@ -76,12 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
             $stmt = $conn->prepare("INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)"); // Ajustado
             $stmt->bind_param("sss", $username, $email, $hashed_password);
             if ($stmt->execute()) {
-                redirect('login.php?success=' . urlencode("Registro bem-sucedido!")); // Mensagem de sucesso
+                redirect('index.php?success=' . urlencode("Registro bem-sucedido!")); // Mensagem de sucesso
             } else {
-                redirect('login.php?error=' . urlencode("Erro ao registrar o usuário.")); // Mensagem de erro
+                redirect('index.php?error=' . urlencode("Erro ao registrar o usuário.")); // Mensagem de erro
             }
         } else {
-            redirect('login.php?error=' . urlencode("Este e-mail já está cadastrado.")); // Mensagem de erro
+            redirect('index.php?error=' . urlencode("Este e-mail já está cadastrado.")); // Mensagem de erro
         }
         $stmt->close();
     }
@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 // Lógica de logout
 if (isset($_GET['logout'])) {
     session_destroy();
-    redirect('login.php'); // Redireciona para a página de login ao sair
+    redirect('index.php'); // Redireciona para a página de login ao sair
 }
 
 // Fechar a conexão com o banco de dados

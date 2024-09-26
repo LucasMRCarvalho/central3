@@ -8,6 +8,8 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit();
 }
+
+// Se o usuário estiver logado, a página continua normalmente
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/central.css">
-    <title>Organizador de Login</title>
+    <title>Central</title>
 </head>
 <body>
     
@@ -29,7 +31,7 @@ if (!isset($_SESSION['user_id'])) {
                 </button>
             </li>
 
-            <li>
+            <li class="active">
                 <a href="dashboard.php">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg>
                     <span>Dashboard</span>
@@ -56,7 +58,7 @@ if (!isset($_SESSION['user_id'])) {
                 </button>
                 <ul class="sub-menu">
                     <div>
-                        <li  class="active"><a href="configbot.php">Config Bot</a></li>
+                        <li><a href="configbot.php">Config Bot</a></li>
                          <li><a href="#">Document</a></li>
                          <li><a href="#">Project</a></li>
                     </div>
@@ -85,34 +87,41 @@ if (!isset($_SESSION['user_id'])) {
         </ul>
     </nav>
 
-    <main class="quebra">
+    <main>
         <div class="container">
-            <h2>Configurações do Bot</h2>
-            <p>
-                Nesse campo você poderá configurar o ID do seu Telegram para que sincronize com o BOT.
-            </p>
+            <h2>Bem vindo: <span>lucas8813@gmail.com</span></h2>
+            <p>⚠️ SEU BOT VENCE EM <strong>18 DIAS!</strong> ⚠️</p>
         </div>
-        <div class="container">
-            <form action="config.php" method="POST">
-                <div class="form-group">
-                    <label for="telegram_id">ID do Telegram:</label>
-                    <input type="text" id="telegram_id" name="telegram_id" required class="form-control">
-                </div>
-                <button type="submit" name="save_telegram_id" class="btn btn-primary">Salvar ID do Telegram</button>
-            </form>
+        <div class="statistics">
+            <h2>📘 Estatísticas:</h2>
         </div>
-        <div class="container">
-            <form action="config.php" method="POST">
-                <div class="form-group">
-                    <label for="mercado_pago_token">Token do Mercado Pago:</label>
-                    <input type="text" id="mercado_pago_token" name="mercado_pago_token" required class="form-control">
-                </div>
-                <button type="submit" name="save_mercado_pago_token" class="btn btn-primary">Salvar Token do Mercado Pago</button>
-            </form>
+        <div class="container">    
+            <div class="stats-section">
+                <h3>Usuários</h3>
+                <ul>
+                    <li>📊 Usuários: <strong>34</strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">   
+            <div class="stats-section">
+                <h3>Receita</h3>
+                <ul>
+                    <li>📈 Receita total: <strong>R$142.00</strong></li>
+                    <li>💠 Receita de hoje: <strong>R$24.00</strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">    
+            <div class="stats-section">
+                <h3>Acessos Vendidos</h3>
+                <ul>
+                    <li>📺 Acessos vendidos: <strong>29</strong></li>
+                    <li>📲 Acessos vendidos hoje: <strong>6</strong></li>
+                </ul>
+            </div>
         </div>
     </main>
-    
-    
 
 <script type="text/javascript" src="public/js/app.js" defer></script>
 </body>
