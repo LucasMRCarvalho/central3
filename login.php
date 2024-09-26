@@ -19,28 +19,29 @@
         <?php endif; ?>
 
 
+
         <!-- Formulário de Login -->
         <form id="login-form" action="auth.php" method="POST">
             <label for="username">Usuário</label>
             <input type="text" id="username" name="username" required>
-        
+            
             <label for="password">Senha</label>
             <input type="password" id="password" name="password" required>
-        
+            
             <button type="submit" name="login">Entrar</button>
         </form>
 
-        <!-- Formulário de Registro, inicialmente oculto -->
+        <!-- Formulário de Registro -->
         <form id="register-form" action="auth.php" method="POST" style="display: none;">
             <label for="new-username">Usuário</label>
             <input type="text" id="new-username" name="new-username" required>
-        
+            
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
-        
+            
             <label for="new-password">Senha</label>
             <input type="password" id="new-password" name="new-password" required>
-        
+            
             <button type="submit" name="register">Registrar</button>
         </form>
         
