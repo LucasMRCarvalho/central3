@@ -1,3 +1,15 @@
+<?php
+// Iniciar a sessão no início do arquivo
+session_start();
+
+// Verificar se o usuário está logado
+if (!isset($_SESSION['user_id'])) {
+    // Se não estiver logado, redireciona para a página de login
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -31,20 +43,20 @@
                 </button>
                 <ul class="sub-menu">
                     <div>
-                        <li class="active"><a href="organizador.html">Organizador Logins</a></li>
-                        <li><a href="quebra.html">Quebra de linhas</a></li>
+                        <li class="active"><a href="organizador.php">Organizador Logins</a></li>
+                        <li><a href="quebra.php">Quebra de linhas</a></li>
                     </div>
                 </ul>
            </li>
             <li>
                 <button onclick=toggleSubMenu(this) class="dropdown-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M222-200 80-342l56-56 85 85 170-170 56 57-225 226Zm0-320L80-662l56-56 85 85 170-170 56 57-225 226Zm298 240v-80h360v80H520Zm0-320v-80h360v80H520Z"/></svg>
-                    <span>listas</span>
+                    <span>Opções</span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
                 </button>
                 <ul class="sub-menu">
                     <div>
-                        <li><a href="#">Folder</a></li>
+                        <li><a href="configbot.php">Config Bot</a></li>
                          <li><a href="#">Document</a></li>
                          <li><a href="#">Project</a></li>
                     </div>
@@ -65,7 +77,7 @@
             </li>
 
             <li class="logout">
-                <a href="#">
+                <a href="auth.php?logout=true">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>
                     <span>Logout</span>
                 </a>

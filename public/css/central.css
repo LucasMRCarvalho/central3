@@ -310,6 +310,36 @@ main p {
     z-index: 9999; /* Ficar acima de outros elementos */
 }
 
+.form-group {
+    margin-bottom: 1.5rem; /* Adiciona espaço entre os grupos de input */
+}
+
+label {
+    display: block; /* Garante que o label ocupe toda a linha */
+    margin-bottom: 0.5rem; /* Espaço entre o label e o input */
+    font-weight: bold; /* Aumenta a ênfase no texto do label */
+}
+
+.form-control {
+    border: none; /* Remove a borda padrão */
+    border-radius: 8px; /* Define o raio da borda para arredondar os cantos */
+    padding: 10px; /* Aumenta o espaçamento interno para conforto */
+    background-color: #f8f9fa; /* Cor de fundo clara para os inputs */
+    transition: all 0.3s ease; /* Transição suave para os efeitos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do input */
+}
+
+.form-control:focus {
+    outline: none; /* Remove o contorno padrão do input */
+    border: 2px solid #007bff; /* Cor da borda ao focar no input */
+    background-color: #ffffff; /* Muda a cor de fundo ao focar */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Adiciona uma sombra ao focar */
+}
+
+
+
+
+
 
 
 
