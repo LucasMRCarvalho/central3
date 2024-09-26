@@ -9,8 +9,18 @@
 <body>
     <div class="container">
         <h1 id="form-title">Login</h1>
+        
+        <!-- Exibir mensagens -->
+        <?php if (isset($_GET['error'])): ?>
+            <div class="alert alert-danger"><?php echo htmlspecialchars($_GET['error']); ?></div>
+        <?php endif; ?>
+        <?php if (isset($_GET['success'])): ?>
+            <div class="alert alert-success"><?php echo htmlspecialchars($_GET['success']); ?></div>
+        <?php endif; ?>
+
+
         <!-- Formulário de Login -->
-        <form id="login-form" action="" method="POST">
+        <form id="login-form" action="auth.php" method="POST">
             <label for="username">Usuário</label>
             <input type="text" id="username" name="username" required>
         
@@ -21,7 +31,7 @@
         </form>
 
         <!-- Formulário de Registro, inicialmente oculto -->
-        <form id="register-form" action="" method="POST" style="display: none;">
+        <form id="register-form" action="auth.php" method="POST" style="display: none;">
             <label for="new-username">Usuário</label>
             <input type="text" id="new-username" name="new-username" required>
         

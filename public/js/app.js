@@ -94,3 +94,29 @@ function copiarResultado() {
     alert('Resultado copiado para a área de transferência!');
 }
 //==============================================================================
+
+// Função para exibir alertas
+function showAlert(type, message) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert ${type}`;
+    alertDiv.textContent = message;
+    document.body.prepend(alertDiv);
+
+    // Remover o alerta após 3 segundos
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 3000);
+}
+
+// Verificar mensagens de sessão (definidas no PHP)
+const urlParams = new URLSearchParams(window.location.search);
+const successMessage = urlParams.get('success');
+const errorMessage = urlParams.get('error');
+
+if (successMessage) {
+    showAlert('success', successMessage);
+}
+
+if (errorMessage) {
+    showAlert('error', errorMessage);
+}
